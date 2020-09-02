@@ -1,6 +1,7 @@
 README.md
 setup.py
 fengmm521Touchapi/__init__.py
+fengmm521Touchapi/server.py
 fengmm521Touchapi/touchapi.py
 fengmm521Touchapi/touchutil.py
 fengmm521Touchapi.egg-info/PKG-INFO
