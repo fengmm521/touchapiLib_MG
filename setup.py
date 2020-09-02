@@ -13,7 +13,7 @@ from setuptools import setup, find_packages
 
 setup(
     name = "fengmm521Touchapi",
-    version = "0.1.4",
+    version = "0.1.5",
     keywords = ("touchapi","fengmm521", "mage"),
     description = "touch api tool",
     long_description = "touch api tool",

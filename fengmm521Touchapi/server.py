@@ -12,8 +12,8 @@ import os
 import socket
 
 import touchapi
+import touchutil as tapi
 import json
-
 
 host = '127.0.0.1'
 port = 9100
@@ -27,6 +27,8 @@ def configPort(sport = None,sbtv = None,ip = None,netport = None):
     if sport and sbtv and ip and netport:
         addr = (ip,netport)
         t = touchapi.openSerial(sport,sbtv)
+        time.sleep(5)
+        touchapi.readcom(t)
     else:
         if os.path.exists('config.json'):
             f= open('config.json','r')
@@ -58,7 +60,12 @@ class Servers(socketserver.BaseRequestHandler):
                 break
             print("RECV from ", self.client_address)
             print("recv data:%s"%(data))
-            rcvstr = touchapi.sendAndread(t, data)
+            senddat = ''
+            if type(data) != str:
+                senddat = tapi.conventCMD(data.decode())
+            else:
+                senddat = tapi.conventCMD(data)
+            rcvstr = touchapi.sendAndread(t, senddat)
             if rcvstr:
                 self.request.send(rcvstr)
 

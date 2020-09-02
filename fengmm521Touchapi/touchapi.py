@@ -35,8 +35,11 @@ def readcom(t):
 def sendcmd(t,cmd):
     sendstr = cmd
     if cmd[-1] != '\r':
-        sendstr += '\r'
-    print(sendstr)
+        if type(sendstr) != str:
+            sendstr = sendstr.decode() + '\r'
+            print(sendstr)
+        else:
+            sendstr +=  '\r'
     if pythonVersion() > 2:
         s = t.write(sendstr.encode())
     else:
