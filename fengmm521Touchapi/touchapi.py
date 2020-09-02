@@ -29,6 +29,7 @@ def readcom(t):
         print(pstr.decode())
     else:
         print(pstr)
+    return pstr
     
 
 def sendcmd(t,cmd):
@@ -50,7 +51,7 @@ def sendAndread(t,v):
     else:
         sendcmd(t,v)
         time.sleep(0.03)
-        readcom(t)
+        return readcom(t)
 
 
 _configobj = tapi._configobj
